@@ -1,0 +1,32 @@
+name: Correction
+description: Report a wrong license, dead link, archived repo, or overstated capability
+title: "[Fix] "
+labels: ["correction"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      placeholder: Project name as listed
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong?
+      options:
+        - Dead or moved link
+        - Repository archived or stale
+        - Wrong license
+        - Description overstates capabilities
+        - Wrong section
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details and evidence
+      description: Link to the license file, commit history, or README section that shows the issue.
+    validations:
+      required: true

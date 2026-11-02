@@ -2,1012 +2,129 @@
 
 > **From product to demo video, powered by GenAI.**
 
-A curated collection of **tools, open-source projects, workflows, experiments and research** making high-quality product demo videos easier to create.
-
-The goal: **democratize product demo video creation with GenAI**.
+A curated collection of open-source projects for creating product demo videos with **GenAI, browser agents, automated recording, narration, and video-as-code**.
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#-contributing)
-[![License: CC0](https://img.shields.io/badge/license-CC0-blue.svg)](#license)
-
----
-
-## 🚀 Why this repo?
-
-Creating a great product demo video is surprisingly hard.
-
-You need to:
-
-- understand what matters in the product
-- build a compelling storyline
-- write the script
-- prepare the demo environment
-- navigate the UI correctly
-- record the screen
-- produce a voice-over
-- synchronize narration and interactions
-- add cursor effects, zooms and highlights
-- edit the footage
-- add titles, transitions and branding
-- export something that actually looks professional
-
-For large product teams, this usually involves **multiple tools and specialized skills**.
-
-For a developer, startup, open-source maintainer or small product team, it can easily become a project of its own.
-
-**GenAI is changing that.**
-
-LLMs can write the story.  
-Agents can interact with the product.  
-Browser automation can reproduce workflows.  
-AI voices can narrate them.  
-AI video tools can edit and enhance the result.
-
-The long-term question behind this repository is simple:
-
-> **How close are we to giving an AI a product and getting a compelling demo video back?**
-
----
-
-## 🗺️ The Landscape
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![License: CC0](https://img.shields.io/badge/license-CC0-blue.svg)](LICENSE)
 
 ```text
-                        PRODUCT
-                           │
-                           ▼
-                    💡 UNDERSTAND
-                  Product / Features
-                           │
-                           ▼
-                      📝 STORY
-                  Script / Storyboard
-                           │
-                           ▼
-                    🤖 INTERACT
-               Browser / UI Automation
-                           │
-                           ▼
-                     🎥 CAPTURE
-                  Screen / Product
-                           │
-                           ▼
-                     🗣️ NARRATE
-                 Voice / Presenter
-                           │
-                           ▼
-                      ✂️ EDIT
-              Cut / Zoom / Highlights
-                           │
-                           ▼
-                     ✨ ENHANCE
-              Visuals / Music / Branding
-                           │
-                           ▼
-                    🎬 DEMO VIDEO
+Product understanding → Demo planning → UI automation
+→ Recording → Narration → Editing → Rendering
 ```
 
-The most interesting solutions increasingly combine several of these steps into a single **AI-native or agentic workflow**.
+## Contents
 
----
+- [End-to-End Demo Generators](#-end-to-end-demo-generators)
+- [Agentic Recording & Product Capture](#-agentic-recording--product-capture)
+- [Video Composition & Post-production](#-video-composition--post-production)
+- [Wanted](#-wanted)
+- [Vision](#-vision)
+- [What Belongs Here?](#-what-belongs-here)
+- [Contributing](#-contributing)
+- [License](#license)
 
-## 🏆 End-to-End Product Demo Generation
+## 🏆 End-to-End Demo Generators
 
-> Tools and projects aiming to generate most or all of a product demo automatically.
+Projects that generate, or aim to generate, a product demo from a live app, URL, storyboard, script, or screenshots.
 
-| Project | Description | Open Source | AI-native |
-|---------|-------------|:-----------:|:---------:|
-| _Add project_ | Product → demo video | ✅ / ❌ | ✅ |
+- [**supercut**](https://github.com/Co-Messi/supercut) — Films a live web app from its URL: an AI director analyses the app, writes a filming recipe, drives the real UI with Playwright, and renders a launch video with camera moves and music. Can also run from a coding agent, with the agent acting as director.  
+  `Real product` `Agentic` `Playwright` `Agent skill` `MIT`
 
-Know a project that belongs here? **Open a PR!**
+- [**ecommerce-video-skills**](https://github.com/iart-ai/ecommerce-video-skills) — Agent skills that turn product or app screenshots into animated demos with device framing, synthetic cursor and clicks, zoom-to-region, and feature captions.  
+  `Screenshots` `Agent skill` `Motion graphics` `MIT`
 
----
+- [**demo-video-generator**](https://github.com/JamesWuHK/demo-video-generator) — Generates narrated walkthroughs from YAML or JSON storyboards: Playwright recording, text-to-speech, timestamp-based sync, and subtitles.  
+  `Scripted` `Playwright` `TTS` `Subtitles` `Early` `MIT`
 
-## 🧠 Product Understanding
+## 🎥 Agentic Recording & Product Capture
 
-Before generating a demo, AI needs context about **what the product does and what is worth demonstrating**.
+Projects that explore, operate, or record real products and repeatable UI journeys.
 
-Relevant approaches include:
+- [**clickcast**](https://github.com/AlexKay28/clickcast) — Records deterministic browser walkthroughs as GIF, MP4, or WebP, with a machine-readable JSON sidecar (selectors, timing, console errors, page state) and an MCP server for live step-by-step control.  
+  `Playwright` `MCP` `Recording` `Structured metadata` `Apache-2.0`
 
-- application exploration
-- UI understanding
-- documentation analysis
-- feature extraction
-- multimodal understanding
-- product knowledge ingestion
-- user journey discovery
-- repository understanding
-- screenshot understanding
+- [**playwright-recording skill**](https://github.com/JuanMarchetto/agent-skills/tree/main/skills/playwright-recording) — Agent skill with Playwright patterns for recording app walkthroughs: navigation and login flows, cursor highlighting, click ripples, viewport scaling, and Remotion output.  
+  `Agent skill` `Playwright` `Cursor effects` `Remotion` `MIT`
 
-### Projects
+- [**playwright-record-mcp**](https://github.com/korwabs/playwright-record-mcp) — Variant of Playwright MCP that adds video recording of LLM-driven browser sessions.  
+  `MCP` `Playwright` `Recording` `Apache-2.0`
 
-| Project | What it brings to demo generation |
-|---------|-----------------------------------|
-| _Add project_ | |
+- [**Playwright MCP**](https://github.com/microsoft/playwright-mcp) — MCP server that lets LLMs operate web apps through Playwright and structured accessibility snapshots. A foundation for reproducible, AI-operated product journeys, not a recorder by itself.  
+  `MCP` `Playwright` `Foundation` `Apache-2.0`
 
----
+- [**browser-use**](https://github.com/browser-use/browser-use) — Python browser-agent library that can discover and execute the product journey to be captured. An upstream interaction layer, not a demo generator.  
+  `Browser agent` `Product exploration` `Foundation` `Python` `MIT`
 
-## 📝 Script & Story Generation
+## ✨ Video Composition & Post-production
 
-> Turn product knowledge into a compelling demo narrative.
+Projects for turning captured material into polished, reusable, programmatically rendered video.
 
-Typical capabilities:
+- [**Remotion**](https://github.com/remotion-dev/remotion) — Create, parameterize, and render videos programmatically with React; a common target for composing recorded footage, titles, captions, audio, and branding.  
+  `Video as code` `React` `Templates` `Source-available` (free for individuals and small companies; company license above that)
 
-- feature → story
-- documentation → demo script
-- prompt → demo scenario
-- persona-specific storytelling
-- automatic storyboarding
-- voice-over generation
-- scene planning
+- [**Remotion Prompt-to-Video Template**](https://github.com/remotion-dev/template-prompt-to-video) — Reference template that generates a script, images, voice-over, and timeline from a prompt. Not demo-specific; useful as a reference for wiring generated media into a render.  
+  `Reference implementation` `Voice-over` `Remotion`
 
-### Projects
+- [**Auto-Editor**](https://github.com/WyattBlue/auto-editor) — CLI that automatically cuts video using loudness and motion signals; a quick first editing pass on raw demo recordings.  
+  `Post-production` `CLI` `Silence removal` `Unlicense`
 
-| Project | Description | Open Source |
-|---------|-------------|:-----------:|
-| _Add project_ | | |
+## 🙋 Wanted
 
----
+Gaps we would like to fill. If you know a project that **demonstrates** one of these, please [open a PR](CONTRIBUTING.md):
 
-## 🤖 Browser & UI Agents
+- **Voice, captions & localization** — narration, subtitles, or translated voice applied to a product demo (not a generic speech model).
+- **Script + UI actions + synchronized narration** in one pipeline.
+- **Docs or repository → demo script and recording plan.**
+- **Pull request or release → regenerated demo** (only affected scenes re-recorded).
+- **Browser-agent session → Remotion timeline.**
+- **Raw screen recording → automatically polished demo** (zooms, cursor, pacing).
 
-One of the most exciting building blocks.
-
-Instead of asking a human to reproduce a perfect workflow while recording, an AI agent can potentially **operate the application itself**.
-
-Examples of relevant technology:
-
-- browser agents
-- computer-use agents
-- visual agents
-- multimodal UI agents
-- Playwright-based agents
-- Selenium-based agents
-- vision-language models for UI interaction
-
-### Projects
-
-| Project | Description | Demo relevance |
-|---------|-------------|----------------|
-| _Add project_ | | |
-
----
-
-## 🎥 Automated Screen Recording
-
-> Capture the product automatically and reproducibly.
-
-Interesting capabilities:
-
-- browser recording
-- deterministic interaction replay
-- automated screen capture
-- viewport control
-- scene segmentation
-- high-resolution capture
-- automated screenshots
-- headless recording
-
-### Projects
-
-| Project | Description | Open Source |
-|---------|-------------|:-----------:|
-| _Add project_ | | |
-
----
-
-## 🖱️ Cursor, Zoom & Interaction Enhancement
-
-Tiny details make a **huge difference** in the perceived quality of a demo.
-
-This category includes:
-
-- automatic cursor smoothing
-- click highlighting
-- cursor replacement
-- automatic zoom
-- focus tracking
-- UI element highlighting
-- motion smoothing
-- automatic pacing
-
-### Projects
-
-| Project | Description | AI-powered |
-|---------|-------------|:----------:|
-| _Add project_ | | |
-
----
-
-## 🗣️ AI Voice Generation
-
-> Turn scripts into natural narration.
-
-Useful capabilities:
-
-- text-to-speech
-- voice cloning
-- multilingual narration
-- emotional control
-- style control
-- pronunciation control
-- automatic timing
-
-### Projects
-
-| Project | Description | Open Source |
-|---------|-------------|:-----------:|
-| _Add project_ | | |
-
----
-
-## 👤 AI Avatars & Presenters
-
-For demos where a human-like presenter improves engagement.
-
-Potential uses:
-
-- virtual presenters
-- talking heads
-- multilingual presenters
-- lip synchronization
-- presentation-style narration
-- picture-in-picture demos
-
-### Projects
-
-| Project | Description | Open Source |
-|---------|-------------|:-----------:|
-| _Add project_ | | |
-
----
-
-## ✂️ AI Video Editing
-
-> Go from raw recording to polished demo.
-
-Interesting capabilities:
-
-- silence removal
-- automatic cuts
-- scene detection
-- transcript-based editing
-- pacing optimization
-- audio cleanup
-- automatic transitions
-- caption generation
-- background music
-- automatic reframing
-
-### Projects
-
-| Project | Description | AI-powered |
-|---------|-------------|:----------:|
-| _Add project_ | | |
-
----
-
-## ✨ Generative Video & Visual Enhancement
-
-Not every part of a demo needs to come from screen recording.
-
-Generative video can complement product footage with:
-
-- animated introductions
-- transitions
-- conceptual scenes
-- backgrounds
-- feature visualizations
-- product animations
-- B-roll
-- outro sequences
-
-### Projects
-
-| Project | Description |
-|---------|-------------|
-| _Add project_ | |
-
----
-
-## 🎨 Branding & Visual Consistency
-
-Professional demos need consistent presentation.
-
-Relevant capabilities:
-
-- brand templates
-- logo insertion
-- typography
-- automatic layouts
-- branded transitions
-- color systems
-- reusable intros/outros
-- automatic subtitles
-
-### Projects
-
-| Project | Description |
-|---------|-------------|
-| _Add project_ | |
-
----
-
-## 🎵 Audio & Music
-
-Audio quality often separates an amateur screen recording from a polished product video.
-
-Interesting areas:
-
-- AI-generated music
-- automatic soundtrack selection
-- noise removal
-- audio enhancement
-- sound effects
-- automatic mixing
-- narration/music balancing
-
-### Projects
-
-| Project | Description |
-|---------|-------------|
-| _Add project_ | |
-
----
-
-## 🧩 Building Blocks for Developers
-
-Not every interesting project is an end-user application.
-
-This section collects technical building blocks useful for building **AI-native demo generation pipelines**.
-
-### Browser Automation
-
-- Playwright ecosystem
-- Selenium ecosystem
-- browser agents
-- computer-use agents
-
-### Video Processing
-
-- FFmpeg-based projects
-- programmatic video editing
-- rendering frameworks
-- video composition libraries
-
-### Multimodal AI
-
-- vision-language models
-- UI understanding
-- screenshot reasoning
-- computer use
-
-### Speech
-
-- text-to-speech
-- speech-to-text
-- voice cloning
-- audio synchronization
-
-### Agentic Orchestration
-
-- workflow orchestration
-- tool calling
-- browser agents
-- multi-agent systems
-
----
-
-## 🧑‍💻 Open-Source Projects
-
-One of the priorities of this repository is discovering **hackable building blocks**.
-
-| Project | Category | Language | Self-hosted | Description |
-|---------|----------|----------|:-----------:|-------------|
-| _Add project_ | | | ✅ | |
-
----
-
-## 🧪 Experiments & Proofs of Concept
-
-Not everything needs to be production-ready.
-
-Interesting experiments can reveal where product demo generation is heading.
-
-### Product → Script
-
-```text
-README / Documentation
-        ↓
-       LLM
-        ↓
- Demo storyline
-        ↓
-   Voice-over script
-```
-
-### Product → Browser Agent → Recording
-
-```text
-Demo objective
-      ↓
-  AI Agent
-      ↓
-Browser automation
-      ↓
-Screen capture
-      ↓
-Raw demo
-```
-
-### Fully Agentic Demo Generation
-
-```text
-                 Product
-                    │
-                    ▼
-            Product Understanding
-                    │
-                    ▼
-              Story Planner
-                    │
-            ┌───────┴───────┐
-            ▼               ▼
-      Browser Agent     Voice Agent
-            │               │
-            ▼               ▼
-       UI Actions        Narration
-            │               │
-            └───────┬───────┘
-                    ▼
-              Video Editor
-                    │
-                    ▼
-             Visual Polish
-                    │
-                    ▼
-               🎬 DEMO
-```
-
-If you've built an experiment in this space, **we'd love to see it**.
-
----
-
-## 🤖 The Agentic Demo Pipeline
-
-A particularly interesting direction is treating demo production as an **agentic workflow** rather than a video-editing problem.
-
-Imagine giving an agent:
-
-```text
-Product:
-https://my-product.example
-
-Objective:
-Show how a new user can create their first AI agent.
-
-Audience:
-Developers and solution architects.
-
-Duration:
-90 seconds.
-
-Style:
-Concise, technical, polished.
-```
-
-The system could then:
-
-```text
-1. Understand the product
-       ↓
-2. Explore the UI
-       ↓
-3. Identify the important user journey
-       ↓
-4. Generate the storyline
-       ↓
-5. Plan the interactions
-       ↓
-6. Operate the application
-       ↓
-7. Capture the screen
-       ↓
-8. Generate narration
-       ↓
-9. Synchronize voice + actions
-       ↓
-10. Edit the recording
-       ↓
-11. Add zooms / cursor effects / captions
-       ↓
-12. Apply branding
-       ↓
-13. Render
-       ↓
-🎬 Product Demo
-```
-
-This is where **LLMs + multimodal models + browser agents + programmatic video generation** start to converge.
-
----
-
-## 📊 Automation Levels
-
-To make comparisons easier, projects can optionally be tagged by automation level.
-
-### 🔵 L1 — AI-assisted
-
-AI improves a traditional workflow.
-
-```text
-Human records → AI removes silence
-Human writes → AI improves script
-Human edits → AI suggests cuts
-```
-
-### 🟡 L2 — AI-automated step
-
-AI completely handles one part of the pipeline.
-
-```text
-Script → AI Voice
-
-or
-
-Recording → AI Editing
-```
-
-### 🟠 L3 — AI workflow
-
-Several stages are automatically orchestrated.
-
-```text
-Script
-  ↓
-Browser automation
-  ↓
-Recording
-  ↓
-Narration
-  ↓
-Editing
-```
-
-### 🟢 L4 — Agentic demo generation
-
-The system receives **an objective rather than detailed production instructions**.
-
-```text
-             Demo Objective
-                    ↓
-                   AI
-                    ↓
-        Understand the Product
-                    ↓
-             Plan the Demo
-                    ↓
-           Operate the Product
-                    ↓
-             Produce Video
-                    ↓
-                 🎬
-```
-
-This is ultimately what this repository is looking for.
-
----
-
-## 🔍 What belongs here?
-
-A project is a good fit if it meaningfully helps with:
-
-✅ product demo generation  
-✅ automated product walkthroughs  
-✅ browser/UI recording  
-✅ agent-driven product interaction  
-✅ demo script generation  
-✅ AI voice-over  
-✅ automated video editing  
-✅ cursor/zoom enhancement  
-✅ multimodal UI understanding  
-✅ programmatic video generation  
-✅ AI avatars for product demonstrations  
-✅ demo-specific video workflows
-
----
-
-## 🚫 What doesn't belong here?
-
-This repository is **not intended to become another generic AI tools list**.
-
-Generally out of scope:
-
-❌ generic text-to-image tools  
-❌ generic chatbots  
-❌ generic video players  
-❌ traditional screen recorders with no meaningful demo-generation angle  
-❌ generic LLM frameworks with no demonstrated relevance to demo production  
-❌ unrelated generative-video projects
-
-A simple test:
-
-> **Does this make it easier for someone to create a great product demo video?**
-
-If yes, it probably belongs here.
-
----
-
-## ⭐ Project Badges
-
-We use lightweight badges to make the landscape easier to scan.
-
-| Badge | Meaning |
-|-------|---------|
-| 🟢 | End-to-end / highly automated |
-| 🤖 | Agentic |
-| 🧠 | GenAI / multimodal |
-| 🧑‍💻 | Open source |
-| 🏠 | Self-hostable |
-| ☁️ | SaaS |
-| 🧪 | Experimental |
-| 💰 | Commercial |
-
-Example:
-
-```text
-MyAwesomeDemoTool  🤖 🧠 🧑‍💻
-```
-
----
-
-## 🧭 How to Evaluate a Tool
-
-When adding or comparing projects, these questions are particularly useful:
-
-### Product understanding
-
-Can it understand what is important about the product?
-
-### Storytelling
-
-Can it turn features into a compelling narrative?
-
-### Interaction
-
-Can it autonomously interact with the application?
-
-### Reproducibility
-
-Can the demo be regenerated when the product changes?
-
-### Narration
-
-Can voice-over be generated and synchronized automatically?
-
-### Editing
-
-How much manual post-production remains?
-
-### Customization
-
-Can teams control style, branding and messaging?
-
-### Deployment
-
-Is it SaaS, self-hosted or usable as a development component?
-
-### Automation
-
-Does it assist a human or actually remove production steps?
-
----
-
-## 💡 Ideas We'd Love to See
-
-There are still many open opportunities in this space.
-
-### 🤖 GitHub Repo → Demo Video
-
-```text
-GitHub Repository
-       ↓
- Understand App
-       ↓
- Launch App
-       ↓
- Explore Features
-       ↓
- Generate Story
-       ↓
- Record
-       ↓
- 🎬 Demo
-```
-
-### 🌐 URL → Demo Video
-
-```text
-Website URL
-     ↓
-AI Browser Agent
-     ↓
-Understand Product
-     ↓
-Plan User Journey
-     ↓
-Interact + Record
-     ↓
-Narrate + Edit
-     ↓
-🎬
-```
-
-### 📝 PR → Updated Demo
-
-```text
-Pull Request
-      ↓
- Detect UI Changes
-      ↓
- Identify impacted scenes
-      ↓
- Re-record scenes
-      ↓
- Regenerate video
-```
-
-### 🌍 One Demo → Multiple Markets
-
-```text
-Original Demo
-      ↓
- Transcript
-      ↓
- Translation
-      ↓
- Localized Voice
-      ↓
- Localized Captions
-      ↓
- 🇫🇷 🇬🇧 🇩🇪 🇯🇵 ...
-```
-
-### 🎯 Persona-specific Demo
-
-```text
-                   Product
-                      │
-          ┌───────────┼───────────┐
-          ▼           ▼           ▼
-       Developer    Manager    Executive
-          │           │           │
-          ▼           ▼           ▼
-       Demo A       Demo B       Demo C
-```
-
----
-
-## 📚 Research & Papers
-
-Research relevant to the future of AI-generated product demonstrations:
-
-- multimodal agents
-- GUI agents
-- computer use
-- visual grounding
-- video understanding
-- video generation
-- automated video editing
-- speech synthesis
-- human-computer interaction
-- agent planning
-
-PRs adding relevant papers are welcome.
-
----
-
-## 🧱 Reference Architecture
-
-A possible architecture for an AI-native demo generation platform:
-
-```text
-                    ┌─────────────────────┐
-                    │    Demo Request     │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   Demo Orchestrator │
-                    └──────────┬──────────┘
-                               │
-             ┌─────────────────┼─────────────────┐
-             ▼                 ▼                 ▼
-      Product Agent       Story Agent       Brand Context
-             │                 │                 │
-             ▼                 ▼                 │
-       UI Understanding    Storyboard            │
-             │                 │                 │
-             └─────────┬───────┘                 │
-                       ▼                         │
-                Browser Agent                    │
-                       │                         │
-                 ┌─────┴─────┐                   │
-                 ▼           ▼                   │
-              Actions      Capture                │
-                 │           │                   │
-                 └─────┬─────┘                   │
-                       ▼                         │
-                Media Pipeline ◄─────────────────┘
-                       │
-             ┌─────────┼──────────┐
-             ▼         ▼          ▼
-           Voice     Editing    Captions
-             │         │          │
-             └─────────┼──────────┘
-                       ▼
-                    Renderer
-                       │
-                       ▼
-                  🎬 DEMO VIDEO
-```
-
-This is only one possible architecture rather than a prescribed implementation.
-
----
-
-## 🤝 Contributing
-
-Contributions are very welcome.
-
-You can contribute by:
-
-- adding a project
-- adding an experiment
-- sharing an architecture
-- adding relevant research
-- correcting information
-- improving classifications
-- sharing an end-to-end workflow
-
-### Adding a project
-
-Please submit a pull request using:
-
-```markdown
-- **Project Name** — Short description of why it matters for product demo generation.
-```
-
-Whenever possible, include:
-
-```text
-Name
-URL
-Category
-Open source: Yes / No
-Self-hostable: Yes / No
-AI-native: Yes / No
-Demo-specific: Yes / No
-Why it belongs here
-```
-
-### Before submitting
-
-Please check that:
-
-- the project is directly relevant to product demo generation
-- the description is factual rather than marketing copy
-- the project isn't already listed
-- the link points to the original project or official repository
-- commercial affiliation is disclosed when applicable
-
----
-
-## 💬 Discussions
-
-Interesting questions for the community:
-
-- What parts of demo creation can already be fully automated?
-- Can a browser agent reliably produce a repeatable demo?
-- Can an AI distinguish a product's key value from secondary features?
-- How should narration and UI interaction be synchronized?
-- How can demos remain stable as the product UI evolves?
-- Can demos become reproducible software artifacts?
-- How should sensitive data and credentials be handled during autonomous recording?
-- What would a standard benchmark for AI demo generation look like?
-
----
-
-## 🧪 Benchmark
-
-Eventually, we'd like to answer a simple question:
-
-> **How autonomous is this demo generator?**
-
-A useful benchmark could measure:
-
-```text
-Product understanding      ★★★★★
-Story generation           ★★★★★
-UI autonomy                ★★★★★
-Recording automation       ★★★★★
-Voice automation           ★★★★★
-Editing automation         ★★★★★
-Visual quality             ★★★★★
-Reproducibility            ★★★★★
-Human effort               ★☆☆☆☆
-```
-
-The ambition is not simply to produce prettier videos.
-
-It's to **reduce the knowledge, tools and manual work required to explain a product well.**
-
----
+A new category is created once it has at least three strong entries.
 
 ## 🌟 Vision
 
-Product demos are one of the most powerful ways to communicate software.
+Today, a polished product demo still needs product knowledge, storytelling, screen-recording and editing skills, and time.
 
-But creating a great demo still requires **storytelling, product knowledge, recording skills, video editing skills and time**.
+This list tracks the open-source projects changing that.
 
-GenAI has the potential to fundamentally change that.
+> **Give AI a product, an audience, and an objective. Get back a compelling, reproducible demo video.**
 
-We are moving from:
+Longer notes live in [`docs/`](docs):
 
-```text
-Human creates demo
-        +
-AI assists
+- [Vision](docs/VISION.md) — why demos are hard, automation levels, where this is heading.
+- [Landscape](docs/LANDSCAPE.md) — the full pipeline, capability map, and idea backlog.
+- [Evaluation](docs/EVALUATION.md) — how to assess a demo generator.
+- [Reference Architecture](docs/REFERENCE-ARCHITECTURE.md) — one possible agentic pipeline.
+
+## 🔍 What Belongs Here?
+
+A repository should do at least one of these:
+
+- generate a product demo or software walkthrough;
+- autonomously explore or operate a product for recording;
+- capture a repeatable UI journey as video;
+- generate narration, editing, or visual effects specifically useful for product demos;
+- provide an open-source building block demonstrably used by a relevant end-to-end workflow.
+
+Generic text-to-video models, conventional screen recorders, broad agent frameworks, generic editing libraries, and closed SaaS without a relevant open-source repository are excluded unless they show a direct product-demo workflow.
+
+> **Does this repository materially reduce the work or expertise required to create a product demo video?**
+
+## 🤝 Contributing
+
+Contributions are welcome. Use this format:
+
+```markdown
+- [**Project Name**](https://github.com/owner/repository) — One factual sentence
+  explaining why it matters for product demo generation.  
+  `Relevant tag` `Relevant tag` `License`
 ```
 
-toward:
-
-```text
-Human defines intent
-        ↓
-AI understands product
-        ↓
-AI designs the story
-        ↓
-AI demonstrates the product
-        ↓
-AI produces the video
-        ↓
-Human reviews
-```
-
-The destination:
-
-> ## **Great product demos should not require a video production team.**
-
-Give the system a **product, an audience and an objective**.
-
-Let AI help with the rest.
-
----
-
-## ⭐ Help Build the Map
-
-This space is evolving quickly, and this repository is intended to evolve with it.
-
-If you know:
-
-- a promising project
-- an obscure open-source repo
-- an interesting research paper
-- a clever workflow
-- an experiment
-- or you're building something yourself
-
-**Open an issue or send a PR.**
-
-And if you find this landscape useful:
-
-### ⭐ Star the repo and help others discover it.
-
----
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full curation policy.
 
 ## License
 
-This list is released under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
+This list is released under [CC0 1.0 Universal](LICENSE).
 
-Project names, trademarks and linked content belong to their respective owners.
+Project names, trademarks, licenses, and linked content belong to their respective owners.

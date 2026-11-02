@@ -1,0 +1,51 @@
+name: Suggest a project
+description: Propose a repository for the list
+title: "[Add] "
+labels: ["add-project"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      options:
+        - End-to-End Demo Generators
+        - Agentic Recording & Product Capture
+        - Video Composition & Post-production
+        - Voice, Captions & Localization (Wanted)
+        - Other / not sure
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License (from the license file)
+      placeholder: MIT, Apache-2.0, source-available, none...
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs here
+      description: Which demo-production step does it remove or simplify? Link a README section, example, or demo if possible.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: The repository is public and not archived.
+          required: true
+        - label: It has a working README, example, or documented workflow.
+          required: true
+        - label: I have disclosed below any commercial affiliation with the project.
+          required: true
+  - type: input
+    id: affiliation
+    attributes:
+      label: Commercial affiliation (if any)
